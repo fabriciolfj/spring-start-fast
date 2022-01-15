@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: product
+  flyway:
+    locations:
+      - classpath:db/migration
+      - classpath:db/testdata
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    metrics:
+      enabled: false
+    prometheus:
+      enabled: true
