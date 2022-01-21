@@ -3,10 +3,12 @@ package com.github.productservice.api.exception;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.OffsetDateTime;
 import java.util.List;
 
+@Setter
 @Getter
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)

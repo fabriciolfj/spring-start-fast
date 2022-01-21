@@ -52,10 +52,10 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
                 })
                 .collect(Collectors.toList());
 
-        Problem problem = createProblemBuilder(status, problemType, detail)
-                .userMessage(detail)
-                .objects(problemObjects)
-                .build();
+        Problem problem = createProblemBuilder(status, problemType, detail);
+        problem.setUserMessage(detail);
+        problem.setUserMessage(detail);
+        problem.setObjects(problemObjects);
 
         return handleExceptionInternal(ex, problem, headers, status, request);
     }
@@ -82,12 +82,13 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         return super.handleExceptionInternal(ex, body, headers, status, request);
     }
 
-    private Problem.ProblemBuilder createProblemBuilder(HttpStatus status, ProblemaType problemaType, String detail){
+    private Problem createProblemBuilder(HttpStatus status, ProblemaType problemaType, String detail){
         return Problem.builder()
                 .title(status.getReasonPhrase())
                 .detail(detail)
                 .status(status.value())
                 .type(problemaType.getPath())
-                .timestamp(OffsetDateTime.now());
+                .timestamp(OffsetDateTime.now())
+                .build();
     }
 }

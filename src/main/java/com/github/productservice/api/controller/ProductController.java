@@ -21,30 +21,28 @@ import java.util.stream.Collectors;
 public class ProductController {
     
     private final ProductService service;
-    private final ProductMapperRequest request;
-    private final ProductMapperResponse response;
     
     @GetMapping
     public List<ProductDtoResponse> findAll() {
         return service.findAll().stream()
-                .map(p -> response.toDto(p)).collect(Collectors.toList());
+                .map(p -> ProductMapperResponse.toDto(p)).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
     public ProductDtoResponse findBy(@PathVariable("id") final Long id) {
-        return Optional.of(service.findlById(id)).map(p -> response.toDto(p)).get();
+        return Optional.of(service.findlById(id)).map(p -> ProductMapperResponse.toDto(p)).get();
     }
 
     @PostMapping
     public void create(@RequestBody ProductDtoRequest dto) {
-        var product = service.create(request.toDomain(dto));
+        var product = service.create(ProductMapperRequest.toEntity(dto));
         ResourceUriHelper.addUriResponseHeader(product);
     }
 
     @PutMapping("/{id}")
     public ProductDtoResponse update(@PathVariable("id")final Long id, @RequestBody ProductDtoRequest dto) {
-        return Optional.of(service.update(id, request.toDomain(dto)))
-                .map(p -> response.toDto(p)).get();
+        return Optional.of(service.update(id, ProductMapperRequest.toEntity(dto)))
+                .map(p -> ProductMapperResponse.toDto(p)).get();
     }
 
     @DeleteMapping("/{id}")
