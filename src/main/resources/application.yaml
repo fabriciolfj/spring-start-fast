@@ -1,4 +1,14 @@
 spring:
+  jmx:
+    enabled: false
+  config:
+    location: classpath:/application.yml
+  main:
+    lazy-initialization: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/product
+    username: root
+    password: root
   application:
     name: product
   flyway:
@@ -23,3 +33,7 @@ management:
       enabled: false
     prometheus:
       enabled: true
+
+logging:
+  level:
+    org.springframework.boot.autoconfigure: INFO
