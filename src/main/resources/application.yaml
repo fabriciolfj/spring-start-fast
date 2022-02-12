@@ -1,3 +1,21 @@
+#tls transport layer security
+#mutuo, o cliente se autentica nos servidor e o servidor no cliente
+
+server:
+  port: 9191
+  ssl:
+    protocol: TLS
+    #trust-store: classpath:keystore/trust.p12 #certificado do cliente
+    #trust-store-password: abc123
+    #client-auth: need #a autenticacao do cliente é obrigatoria
+    enabled: true
+    enabled-protocols:
+      - TLSv1.2
+    key-store-type: PKCS12
+    key-store: classpath:keystore/keystore.p12 #certificado do servidor
+    key-alias: test
+    key-store-password: abc123
+
 spring:
   jmx:
     enabled: false
