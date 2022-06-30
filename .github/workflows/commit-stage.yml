@@ -22,12 +22,12 @@ jobs:
           valueFile: 'helm/values.yaml'
           propertyPath: 'tag.version'
           value: ${{ env.VERSION }}
-          commitChange: true
+          commitChange: false
           updateFile: true
           token: ${{ secrets.SPRING_FAST }}
           targetBranch: main
           branch: main
-          repository: https://github.com/fabriciolfj/spring-fast-argocd
+          repository: https://github.com/fabriciolfj/spring-start-fast
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
