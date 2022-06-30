@@ -51,10 +51,11 @@ jobs:
           docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} \
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-      - name: Render Deployment YAML
-        uses: nowactions/envsubst@v1
+      - name: Update values.yaml
+        uses: fjogeleit/yaml-update-action@main
         with:
-          input: values.yaml
-          output: ./helm/values.yaml
-        env:
-          IMAGE_TAG: ${{ env.VERSION }}
+          valueFile: './helm/values.yaml'
+          propertyPath: 'tag.version'
+          value: ${{ env.REGISTRY }}
+          commitChange: true
+          updateFile: true
