@@ -43,6 +43,7 @@ jobs:
           commitChange: false
           updateFile: true
           token: ${{ secrets.GITHUB_TOKEN }}
+          targetBranch: main
       - name: Build container image
         run: |
           chmod +x ./mvnw
