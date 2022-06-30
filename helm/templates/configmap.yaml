@@ -14,7 +14,7 @@ data:
                       datasource:
                         url: jdbc:mysql://my-release-mysql:3306/product
                         username: root
-                        password: b6JIApSkgn
+                        password: root
                         driver-class-name: com.mysql.cj.jdbc.Driver
                       application:
                         name: product
