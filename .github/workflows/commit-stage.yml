@@ -26,6 +26,7 @@ jobs:
           updateFile: true
           token: ${{ secrets.GITHUB_TOKEN }}
           targetBranch: main
+          branch: main
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
