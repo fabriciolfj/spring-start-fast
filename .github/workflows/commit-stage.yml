@@ -39,9 +39,10 @@ jobs:
         with:
           valueFile: 'helm/values.yaml'
           propertyPath: 'tag.version'
-          value: ${{ env.IMAGE_NAME }}'
+          value: ${{ env.IMAGE_NAME }}
           commitChange: false
           updateFile: true
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build container image
         run: |
           chmod +x ./mvnw
