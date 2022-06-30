@@ -52,7 +52,7 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
       - name: Replace image in config
-        uses: ./.github/actions/replace
+        uses: datamonsters/replace-action
         with:
           files: helm/values.yaml
           replacements: '$VERSION=${{ env.IMAGE_NAME }}'
