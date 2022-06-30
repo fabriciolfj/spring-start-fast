@@ -19,5 +19,5 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-        - value.yaml
+        - values.yaml
   project: default
