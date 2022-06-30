@@ -22,7 +22,7 @@ jobs:
           valueFile: 'helm/values.yaml'
           propertyPath: 'tag.version'
           value: ${{ env.VERSION }}
-          commitChange: false
+          commitChange: true
           updateFile: true
           token: ${{ secrets.GITHUB_TOKEN }}
           targetBranch: main
