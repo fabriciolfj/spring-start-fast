@@ -25,7 +25,7 @@ jobs:
       - name: Build, unit tests and integration tests
         run: |
           chmod +x mvnw
-          ./mvnw clean package / 
+          ./mvnw clean package
           ./mvn -B versions:set -DnewVersion=${{ env.VERSION }} -DgenerateBackupPoms=false
       - name: Render Deployment YAML
         uses: nowactions/envsubst@v1
