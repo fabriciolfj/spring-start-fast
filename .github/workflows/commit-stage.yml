@@ -24,7 +24,7 @@ jobs:
           value: ${{ env.VERSION }}
           commitChange: true
           updateFile: true
-          token: ${{github.token}}
+          token: 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
           targetBranch: main
           branch: main
   package:
