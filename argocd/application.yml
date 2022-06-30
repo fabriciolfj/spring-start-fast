@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: product
+  namespace: argocd
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=false
+    automated:
+      selfHeal: true # sincronizar automaticamente com o repositorio
+      prune: true # caso exclua algum arquivo, o argo vai excluir o recurso no kubernetes
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: product
+  source:
+    path: k8s
+    repoURL: 'https://github.com/fabriciolfj/spring-start-fast'
+    targetRevision: HEAD
+  project: default
