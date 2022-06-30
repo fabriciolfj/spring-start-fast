@@ -34,6 +34,14 @@ jobs:
           distribution: temurin
           java-version: 17
           cache: maven
+      - name: Update values.yaml
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          valueFile: 'helm/values.yaml'
+          propertyPath: 'tag.version'
+          value: ${{ env.IMAGE_NAME }}'
+          commitChange: false
+          updateFile: true
       - name: Build container image
         run: |
           chmod +x ./mvnw
@@ -52,11 +60,3 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
             - name: Update values.yaml
-      - name: Update values.yaml
-        uses: fjogeleit/yaml-update-action@main
-        with:
-          valueFile: 'helm/values.yaml'
-          propertyPath: 'tag.version'
-          value: ${{ env.IMAGE_NAME }}'
-          commitChange: false
-          updateFile: true
