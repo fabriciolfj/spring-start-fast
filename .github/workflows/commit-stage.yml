@@ -24,7 +24,7 @@ jobs:
           value: ${{ env.VERSION }}
           commitChange: true
           updateFile: true
-          token: ${{ secrets.TOKEN_ARGO }}
+          token: ${{ secrets.SPRING_FAST }}
           targetBranch: main
           branch: main
           repository: https://github.com/fabriciolfj/spring-fast-argocd
