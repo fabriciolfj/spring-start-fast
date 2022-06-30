@@ -22,7 +22,7 @@ jobs:
           valueFile: 'helm/values.yaml'
           propertyPath: 'image.tag'
           value: ${{ env.VERSION }}
-          commitChange: false
+          commitChange: true
           updateFile: true
           token: ${{ secrets.SPRING_FAST }}
           targetBranch: main
@@ -61,4 +61,6 @@ jobs:
       - name: Publish container image (latest)
         run: |
           docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} \
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+
