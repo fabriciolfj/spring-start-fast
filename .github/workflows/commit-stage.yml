@@ -55,8 +55,8 @@ jobs:
       - name: Update values.yaml
         uses: fjogeleit/yaml-update-action@main
         with:
-          valueFile: 'file.yaml'
-          propertyPath: 'file.version'
+          valueFile: 'helm/values.yaml'
+          propertyPath: 'tag.version'
           value: ${{ env.IMAGE_NAME }}'
           commitChange: false
           updateFile: true
