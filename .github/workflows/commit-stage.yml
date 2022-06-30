@@ -39,7 +39,7 @@ jobs:
         with:
           valueFile: 'helm/values.yaml'
           propertyPath: 'tag'
-          value: ${{ env.IMAGE_NAME }}
+          value: ${{ env.VERSION }}
           commitChange: false
           updateFile: true
           token: ${{ secrets.GITHUB_TOKEN }}
