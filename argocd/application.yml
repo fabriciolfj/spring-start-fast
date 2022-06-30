@@ -15,7 +15,7 @@ spec:
     namespace: product
   source:
     path: helm
-    repoURL: 'https://github.com/fabriciolfj/spring-start-fast'
+    repoURL: 'https://github.com/fabriciolfj/spring-fast-argocd'
     targetRevision: HEAD
     helm:
       valueFiles:
