@@ -20,7 +20,7 @@ jobs:
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: 'helm/values.yaml'
-          propertyPath: 'tag'
+          propertyPath: 'tag.version'
           value: ${{ env.VERSION }}
           commitChange: false
           updateFile: true
