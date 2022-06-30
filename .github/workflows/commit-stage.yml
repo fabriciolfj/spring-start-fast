@@ -25,7 +25,7 @@ jobs:
           cache: maven
       - name: Build, unit tests and integration tests
         run: |
-          chmod +x ./mvnw
+          chmod +x mvnw
           ./mvnw clean install
       - name: Render Deployment YAML
         uses: nowactions/envsubst@v1
