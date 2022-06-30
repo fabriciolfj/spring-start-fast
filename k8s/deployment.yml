@@ -27,36 +27,36 @@ spec:
             requests:
               memory: 700Mi
               cpu: "300m"
-            livenessProbe:
-              httpGet:
-                scheme: HTTP
-                path: /actuator/info
-                port: 8080
-              initialDelaySeconds: 10
-              periodSeconds: 40
-              timeoutSeconds: 2
-              failureThreshold: 30
-              successThreshold: 1
-            readinessProbe:
-              httpGet:
-                scheme: HTTP
-                path: /actuator/health
-                port: 8080
-              initialDelaySeconds: 10
-              periodSeconds: 10
-              timeoutSeconds: 2
-              failureThreshold: 3
-              successThreshold: 1
-            volumeMounts:
-              - mountPath: /etc/config
-                name: config-products
-          volumes:
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /actuator/info
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 40
+            timeoutSeconds: 2
+            failureThreshold: 30
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          volumeMounts:
             - name: config-products
-              configMap:
-                name: config-product
-                items:
-                  - key: application.yml
-                    path: application.yml
+              mountPath: /etc/config
+      volumes:
+        - name: config-products
+          configMap:
+            name: config-product
+            items:
+              - key: application.yml
+                path: application.yml
 ---
 apiVersion: v1
 kind: Service

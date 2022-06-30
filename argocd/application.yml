@@ -18,7 +18,6 @@ spec:
     repoURL: 'https://github.com/fabriciolfj/spring-start-fast'
     targetRevision: HEAD
     helm:
-      valuesFiles:
+      valueFiles:
         - value.yaml
-        -
   project: default

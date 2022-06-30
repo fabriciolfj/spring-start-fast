@@ -12,7 +12,7 @@ data:
                       main:
                         lazy-initialization: true
                       datasource:
-                        url: jdbc:mysql://mysql:3306/product
+                        url: jdbc:mysql://192.168.0.112:3306/product
                         username: root
                         password: root
                         driver-class-name: com.mysql.cj.jdbc.Driver
