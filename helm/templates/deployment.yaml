@@ -15,6 +15,9 @@ spec:
       containers:
         - name: {{ .Values.app.name }}
           image: docker.io/{{ .Values.image.repository }}:{{ .Values.image.tag }}
+          env:
+            - name: SPRING_CONFIG_LOCATION
+              value: file:/etc/config/application.yml
           ports:
             - containerPort: 8080
           resources:
