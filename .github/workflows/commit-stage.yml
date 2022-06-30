@@ -17,7 +17,9 @@ jobs:
     permissions:
       contents: read
       security-events: write
-    if: github.ref_name =='dev'
+    strategy:
+      matrix:
+        build_type: [dev]
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
@@ -33,7 +35,6 @@ jobs:
           targetBranch: main
           branch: main
   package:
-    if: github.ref_name =='dev'
     name: Package and Publish
     needs: [ build ]
     runs-on: ubuntu-20.04
