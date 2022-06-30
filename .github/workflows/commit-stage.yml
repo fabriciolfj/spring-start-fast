@@ -24,7 +24,7 @@ jobs:
           value: ${{ env.VERSION }}
           commitChange: true
           updateFile: true
-          token: ${{ secrets.GITHUB_SECRET }}
+          token: ${{ secrets.SPRING_FAST }}
           targetBranch: main
           branch: main
   package:
