@@ -51,8 +51,12 @@ jobs:
           docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} \
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-      - name: Replace image in config
-        uses: datamonsters/replace-action
+            - name: Update values.yaml
+      - name: Update values.yaml
+        uses: fjogeleit/yaml-update-action@main
         with:
-          files: 'helm/values.yaml'
-          replacements: '$VERSION=${{ env.IMAGE_NAME }}'
+          valueFile: 'file.yaml'
+          propertyPath: 'file.version'
+          value: ${{ env.IMAGE_NAME }}'
+          commitChange: false
+          updateFile: true
