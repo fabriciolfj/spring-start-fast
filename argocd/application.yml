@@ -14,7 +14,11 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: product
   source:
-    path: k8s
+    path: helm
     repoURL: 'https://github.com/fabriciolfj/spring-start-fast'
     targetRevision: HEAD
+    helm:
+      valuesFiles:
+        - value.yaml
+        -
   project: default

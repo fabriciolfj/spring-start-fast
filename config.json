@@ -1,0 +1,22 @@
+{
+  "platform": "github",
+  "repositories": [
+    {
+      "repository": "fabriciolfj/spring-start-fast",
+      "enabledManagers": ["kubernetes", "helm-values"],
+      "kubernetes" : {
+        "fileMatch": ["\\.yaml$"]
+      },
+      "helm-values": {
+        "fileMatch": ["(.*)values.yaml$"]
+      },
+      "packageRules": [
+        {
+          "matchUpdateTypes": ["minor", "patch"],
+          "automerge": true
+        }
+      ],
+      "ignoreTests": true
+    }
+  ]
+}
