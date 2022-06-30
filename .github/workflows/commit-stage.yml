@@ -17,6 +17,7 @@ jobs:
     permissions:
       contents: read
       security-events: write
+    if: contains(github.head_ref, 'dev')
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
@@ -32,6 +33,7 @@ jobs:
           targetBranch: main
           branch: main
   package:
+    if: contains(github.head_ref, 'dev')
     name: Package and Publish
     needs: [ build ]
     runs-on: ubuntu-20.04
