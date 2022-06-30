@@ -4,5 +4,5 @@ app:
 
 image:
   repository: 'fabricio211/product-service'
-  tag: 1.0.1
+  tag: 2.0.1
   registry: docker.io
