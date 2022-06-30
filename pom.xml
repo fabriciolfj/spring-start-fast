@@ -89,7 +89,7 @@
 						</exclude>
 					</excludes>
 					<image>
-						<name>docker.io/fabricio211/${project.artifactId}:${project.version}</name>
+						<name>docker.io/fabricio211/${project.artifactId}</name>
 					</image>
 					<layers>
 						<enabled>true</enabled>
