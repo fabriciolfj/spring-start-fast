@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: read
       security-events: write
-    if: github.ref == 'ref/heads/dev'
+    if: ${{ github.ref == 'ref/heads/dev' }}
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
@@ -33,7 +33,7 @@ jobs:
           branch: main
   package:
     name: Package and Publish
-    if: github.ref == 'refs/heads/dev'
+    #if: ${{ github.ref == 'refs/heads/dev' }}
     needs: [ build ]
     runs-on: ubuntu-20.04
     permissions:
