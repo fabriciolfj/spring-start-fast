@@ -54,5 +54,5 @@ jobs:
       - name: Replace image in config
         uses: datamonsters/replace-action
         with:
-          files: helm/values.yaml
+          files: 'helm/values.yaml'
           replacements: '$VERSION=${{ env.IMAGE_NAME }}'
