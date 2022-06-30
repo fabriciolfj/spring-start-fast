@@ -17,9 +17,7 @@ jobs:
     permissions:
       contents: read
       security-events: write
-    strategy:
-      matrix:
-        build_type: [dev]
+    if: github.ref != 'refs/heads/main'
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
@@ -42,6 +40,7 @@ jobs:
       contents: read
       packages: write
       security-events: write
+    if: github.ref != 'refs/heads/main'
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
