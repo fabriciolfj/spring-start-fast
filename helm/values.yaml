@@ -6,4 +6,4 @@ image:
   tag: tag.version
   registry: docker.io
 tag:
-  version: c58a1d9fd8450aeca04116f2463b197b62925766
+  version: 565c73709fc617a224361bddb350570b23bf8a11
