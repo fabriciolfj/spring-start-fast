@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}-deployment
+spec:
+  replicas: {{ .Values.app.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}
+    spec:
+      containers:
+        - name: {{ .Values.app.name }}
+          image: docker.io/{{ .Values.image.repository }}:{{ .Values.image.tag }}
+          env:
+            - name: SPRING_CONFIG_LOCATION
+              value: file:/etc/config/application.yml
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: 700Mi
+              cpu: "300m"
+            requests:
+              memory: 700Mi
+              cpu: "300m"
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /actuator/info
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 40
+            timeoutSeconds: 2
+            failureThreshold: 30
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+          volumeMounts:
+            - name: config-products
+              mountPath: /etc/config
+      volumes:
+        - name: config-products
+          configMap:
+            name: config-product
+            items:
+              - key: application.yml
+                path: application.yml
