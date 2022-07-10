@@ -1,7 +1,0 @@
-app:
-  name: product-service
-  replicas: 2
-image:
-  repository: fabricio211/product-service
-  tag: tag.version
-  registry: docker.io
