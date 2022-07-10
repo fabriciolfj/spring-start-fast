@@ -91,6 +91,11 @@
 					<layers>
 						<enabled>true</enabled>
 					</layers>
+					<executable>true</executable>
+					<jvmArguments>
+						-Xms256m
+						-Xmx1g
+					</jvmArguments>
 				</configuration>
 				<executions>
 					<execution>
