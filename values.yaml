@@ -1,8 +1,0 @@
-app:
-  name: product-service
-  replicas: 2
-
-image:
-  repository: 'fabricio211/product-service'
-  tag: ${IMAGE_TAG}
-  registry: docker.io
